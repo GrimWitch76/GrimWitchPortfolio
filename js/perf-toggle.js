@@ -36,6 +36,17 @@
       CORE_GLOW: true,
       DUST_EVERY: 4,
       MAX_DPR: 1
+    },
+    Off: {
+      STAR_DENSITY_DIV: 0,
+      GALAXY_ARM_MULT: 0,
+      ARM_CORE_BOOST: 0,
+      ARM_TRAIL_LEN: 0,
+      DUST_GLOW: false,
+      STREAKS: false,
+      CORE_GLOW: false,
+      DUST_EVERY: 0,
+      MAX_DPR: 0
     }
   };
 
@@ -62,6 +73,7 @@
 
   const select = document.createElement('select');
   select.innerHTML = `
+    <option value="Off">Off</option>
     <option value="Low">Low</option>
     <option value="Balanced">Balanced</option>
     <option value="Cinematic">Cinematic</option>
