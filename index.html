@@ -1,74 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cosmic Debugger — Style Guide</title>
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cosmic Debugger — Curtis Reynolds</title>
+<meta name="description" content="Curtis Reynolds — Game Programmer. Clean ✦ Magical ✦ Space." />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="../css/warp-vt.css" />
+<script src="../js/warp-vt.js" defer></script>
 </head>
-
 <body>
-  <canvas id="starfield"></canvas>
+<!-- Background effects -->
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="layer overlay-1" aria-hidden="true"></div>
+<div class="layer overlay-2" aria-hidden="true"></div>
 
-  <header class="hero">
-    <h1 class="glow-text">Creating New Worlds with Code</h1>
-    <p class="subtitle">A visual style guide for the Cosmic Debugger aesthetic</p>
-  </header>
 
-  <main>
-    <!-- Palette -->
-    <section class="block palette">
-      <h2>Color Palette</h2>
-      <div class="swatches">
-        <div class="swatch" style="--swatch:#1a0f2e;" data-name="#1a0f2e"></div>
-        <div class="swatch" style="--swatch:#00ffff;" data-name="#00ffff"></div>
-        <div class="swatch" style="--swatch:#ff00ff;" data-name="#ff00ff"></div>
-        <div class="swatch" style="--swatch:#cfcfcf;" data-name="#cfcfcf"></div>
-      </div>
-    </section>
-
-    <!-- Typography -->
-    <section class="block typography">
-      <h2>Typography</h2>
-      <h1>H1 — The Cosmic Debugger</h1>
-      <h2>H2 — Wizard Programmer</h2>
-      <p>Body — The code is a spell, the compiler a ritual, the result another world made manifest.</p>
-    </section>
-
-    <!-- Buttons / UI -->
-    <section class="block ui">
-      <h2>UI Elements</h2>
-      <button class="btn-glow">Hover Me</button>
-      <button class="btn-outline">Outlined</button>
-    </section>
-
-<div class="project-info hidden" id="projectInfo">
-  <h2 id="projName">Project Title</h2>
-  <p id="projDesc">Project description goes here...</p>
-  <button id="closeInfo">Back</button>
+<!-- Nav -->
+<header class="nav">
+<div class="container nav-wrap">
+<a href="#home" class="brand">Cosmic Debugger</a>
+<nav class="nav" aria-label="Primary">
+<a href="#projects">Projects</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+<a class="btn" href="#resume">Résumé</a>
+</nav>
 </div>
+</header>
 
 
-    <canvas id="nebula"></canvas>
-    <canvas id="constellation"></canvas>
+<main class="container" id="home" style="position:relative;z-index:10">
+<!-- Hero -->
+<section class="section hero">
+<div class="grid">
+<div>
+<h1>Creating worlds with <span class="accent">code</span></h1>
+<p class="lead">I’m <strong>Curtis Reynolds</strong> — a game programmer who ships polished prototypes and production‑ready systems. This is my corner of the cosmos: a calm showcase of shipped games, tools, and weird little experiments.</p>
+<div class="cta">
+<a class="btn" href="#projects">View Projects</a>
+<a class="btn" href="#contact">Get in touch</a>
+</div>
+<div class="badge-row">
+<span class="pill">Unity / UE5</span>
+<span class="pill">Gameplay</span>
+<span class="pill">UI Systems</span>
+<span class="pill">Shaders</span>
+<span class="pill">C++ / C#</span>
+<span class="pill">Optimization</span>
+</div>
+</div>
+<div class="aside">
+<small>Currently</small>
+<p class="aside-title">Gameplay/UI Engineer @ Sprung Studios</p>
+<small>Vancouver, BC</small>
+<p class="aside-copy">Building portfolio pieces and polishing <em>Echo Protocol</em>.</p>
+</div>
+</div>
+</section>
 
-    <!-- Constellation Preview -->
-    <section class="block constellation">
-      <h2>Constellation Node Preview</h2>
-      <div id="constellation-demo"></div>
-    </section>
 
-    
-    <canvas id="constellation"></canvas>
-    <script src="js/nebula.js"></script>
-    <script src="js/constellationBackground.js"></script>
+<hr/>
 
-  </main>
 
-  <footer>
-    <p>© 2025 Curtis Reynolds — Cosmic Debugger Style Guide</p>
-  </footer>
+<!-- Projects -->
+<section id="projects" class="section">
+<h2 class="h2">Projects</h2>
+<p class="lead lead-tight">A small constellation of shipped games, tools, and prototypes. Click to open case studies.</p>
+<div class="cards" id="project-cards" aria-live="polite"></div>
+</section>
 
-  <script src="js/main.js"></script>
+
+<hr/>
+
+
+<!-- About -->
+<section id="about" class="section">
+<div class="about">
+<div>
+<h2 class="h2">About</h2>
+<p class="lead">I build robust gameplay systems, clean UI, and the glue code that makes teams fast. I like constraints, cozy horror, and tools that save everyone an hour a day.</p>
+<ul class="bullets">
+<li>UE5 / Unity</li>
+<li>C++ / C#</li>
+<li>Shaders / VFX</li>
+<li>Tools & Pipelines</li>
+<li>Input / UI Systems</li>
+<li>Performance Passes</li>
+</ul>
+</div>
+<div class="aside">
+<small>Bio bits</small>
+<p class="aside-title">Shipped games at studios, jam enjoyer, portfolio tinkerer.</p>
+<p class="aside-copy">Into analog‑horror vibes and polished feel.</p>
+</div>
+</div>
+</section>
+
+
+<hr/>
+
+
+<!-- Contact -->
+<section id="contact" class="section">
+<div class="contact-box">
+<h2 class="h2">Say hello</h2>
+<p class="lead">Want a hand with a prototype, a UI pass, or a spooky jam? I’m always up for cool problems.</p>
+<div class="links">
+<a class="btn" href="mailto:hello@example.com">Email</a>
+<a class="btn" href="#">GitHub</a>
+<a class="btn" href="#">Itch.io</a>
+<a class="btn" href="#">LinkedIn</a>
+</div>
+</div>
+</section>
+</main>
+
+
+<footer class="foot">
+<div class="container foot-wrap">
+<small>© <span id="y"></span> Curtis Reynolds — Made among the stars.</small>
+<small>Theme: Clean ✦ Magical ✦ Space</small>
+</div>
+</footer>
+
+
+<script src="js/projects.js" defer></script>
+<script src="js/bg.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>

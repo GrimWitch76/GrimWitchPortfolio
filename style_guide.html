@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosmic Debugger — Style Guide</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <canvas id="starfield"></canvas>
+
+  <header class="hero">
+    <h1 class="glow-text">Creating New Worlds with Code</h1>
+    <p class="subtitle">A visual style guide for the Cosmic Debugger aesthetic</p>
+  </header>
+
+  <main>
+    <!-- Palette -->
+    <section class="block palette">
+      <h2>Color Palette</h2>
+      <div class="swatches">
+        <div class="swatch" style="--swatch:#1a0f2e;" data-name="#1a0f2e"></div>
+        <div class="swatch" style="--swatch:#00ffff;" data-name="#00ffff"></div>
+        <div class="swatch" style="--swatch:#ff00ff;" data-name="#ff00ff"></div>
+        <div class="swatch" style="--swatch:#cfcfcf;" data-name="#cfcfcf"></div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="block typography">
+      <h2>Typography</h2>
+      <h1>H1 — The Cosmic Debugger</h1>
+      <h2>H2 — Wizard Programmer</h2>
+      <p>Body — The code is a spell, the compiler a ritual, the result another world made manifest.</p>
+    </section>
+
+    <!-- Buttons / UI -->
+    <section class="block ui">
+      <h2>UI Elements</h2>
+      <button class="btn-glow">Hover Me</button>
+      <button class="btn-outline">Outlined</button>
+    </section>
+
+<div class="project-info hidden" id="projectInfo">
+  <h2 id="projName">Project Title</h2>
+  <p id="projDesc">Project description goes here...</p>
+  <button id="closeInfo">Back</button>
+</div>
+
+
+    <canvas id="nebula"></canvas>
+    <canvas id="constellation"></canvas>
+
+    <!-- Constellation Preview -->
+    <section class="block constellation">
+      <h2>Constellation Node Preview</h2>
+      <div id="constellation-demo"></div>
+    </section>
+
+    
+    <canvas id="constellation"></canvas>
+    <script src="js/nebula.js"></script>
+    <script src="js/constellationBackground.js"></script>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Curtis Reynolds — Cosmic Debugger Style Guide</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+/* View Transitions API animations for a soft cosmic warp */
+/* These pseudo-elements target the old/new page bitmaps */
+::view-transition-old(root){
+  animation: warpOut 500ms ease both;
+}
+::view-transition-new(root){
+  animation: warpIn 500ms ease both;
+}
+
+@keyframes warpOut{
+  from{ filter:none; transform:none; opacity:1; }
+  to{ filter:blur(14px) saturate(1.1); transform:scale(1.04); opacity:.6; }
+}
+@keyframes warpIn{
+  from{ filter:blur(18px) saturate(1.15); transform:scale(0.96); opacity:0; }
+  to{ filter:none; transform:none; opacity:1; }
+}
+
+/* Reduce motion: browsers will skip VT if user prefers reduced motion,
+   but in case a polyfill or future behavior changes, keep this guard. */
+@media (prefers-reduced-motion: reduce){
+  ::view-transition-old(root),
+  ::view-transition-new(root){ animation:none !important; }
+}
+
+@view-transition { navigation: auto; }

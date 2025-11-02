@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ghost With a Gun — Curtis Reynolds</title>
+  <meta name="description" content="Scream Jam prototype with squad. Case study and links." />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/warp-vt.css" />
+  <link rel="canonical" href="/projects/ghost-with-a-gun/" />
+  <meta property="og:title" content="Ghost With a Gun — Curtis Reynolds" />
+  <meta property="og:description" content="Scream Jam prototype with squad." />
+  <meta property="og:image" content="/projects/ghost-with-a-gun/og.jpg" />
+</head>
+<body>
+  <!-- Background -->
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="layer overlay-1" aria-hidden="true"></div>
+  <div class="layer overlay-2" aria-hidden="true"></div>
+
+  <!-- Nav (same as home) -->
+  <header class="nav">
+    <div class="container nav-wrap">
+      <a href="/" class="brand">Cosmic Debugger</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/index.html#projects">Projects</a>
+        <a href="/index.html#about">About</a>
+        <a href="/index.html#contact">Contact</a>
+        <a class="btn" href="/index.html#resume">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="position:relative;z-index:10">
+    <section class="section">
+      <a class="btn" href="/index.html#projects">← Back to Projects</a>
+      <h1 style="margin-top:14px">Ghost With a Gun</h1>
+      <p class="lead">Scream Jam prototype with squad.</p>
+
+      <!-- Hero media (replace src) -->
+      <div class="cards" style="margin-top:16px">
+        <div class="card">
+          <img src="./hero.jpg" alt="Ghost With a Gun screenshot" style="width:100%;border-radius:12px;display:block;" />
+        </div>
+      </div>
+
+      <div class="about" style="margin-top:24px">
+        <div>
+          <h2 class="h2">What I did</h2>
+          <ul class="bullets">
+            <li>Gameplay systems & AI behaviors</li>
+            <li>UI & moment-to-moment feel pass</li>
+            <li>Jumpscare sequence + audio hooks</li>
+          </ul>
+          <h2 class="h2" style="margin-top:18px">Tech</h2>
+          <p class="lead">Unreal Engine 5 • C++ • UMG</p>
+        </div>
+        <aside class="aside">
+          <small>Links</small>
+          <p class="aside-title"><a class="btn" href="#">Itch.io</a></p>
+          <p class="aside-copy"><a class="btn" href="#">GitHub</a></p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="container foot-wrap">
+      <small>© <span id="y"></span> Curtis Reynolds — Made among the stars.</small>
+      <small>Theme: Clean ✦ Magical ✦ Space</small>
+    </div>
+  </footer>
+
+  <script src="/js/bg-slower.js" defer></script>
+  <script src="/js/warp-vt.js" defer></script>
+  <script src="/js/main.js" defer></script>
+</body>
+</html>
