@@ -1,0 +1,301 @@
+/* Project Constellation Layout
+   -------------------------------------------
+   - Blocks (nodes) float gently in space
+   - SVG links connect blocks like a constellation
+   - Mobile fallback: clean stacked sections
+*/
+:root{
+  --accent: #a5b4fc;      /* indigo */
+  --accent-2: #ec4899;    /* magenta */
+  --ink: #e5e7eb;
+  --ink-dim:#a1a1aa;
+  --card-bg: rgba(255,255,255,.05);
+  --card-line: rgba(255,255,255,.16);
+}
+
+html,body{height:100%}
+body{
+  margin:0;
+  background:#060614;
+  color:var(--ink);
+  font:500 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial
+}
+
+/* Container hosting nodes + overlay SVG */
+.constellation{
+  position:relative;
+  max-width:1200px;
+  height:100%;
+  margin:0 auto;
+  padding:6rem 1.2rem 5rem;
+}
+
+/* The SVG overlay sits on top, ignores pointer events */
+.constellation svg.links{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:2;
+}
+
+/* Node cards */
+.node{
+  position:absolute;
+  max-width:min(420px, 40vw);
+  min-width:120px;
+  padding:1rem 1.1rem;
+  border-radius:14px;
+  border:1px solid var(--card-line);
+  background:var(--card-bg);
+  z-index: 5;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  transform: translate3d(0,0,0);
+  transition: box-shadow .25s ease, transform .2s ease, background .25s ease, border-color .25s ease, opacity .25s ease, filter .25s ease;
+}
+.node:hover{
+  box-shadow: 0 16px 40px rgba(165,180,252,.18);
+  border-color: rgba(165,180,252,.45);
+}
+
+.node h2{font-size:1rem; margin:0 0 .35rem; letter-spacing:.3px}
+.node p{margin:.35rem 0}
+.node .chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:.35rem}
+.node .chip{
+  font-size:.75rem;
+  padding:.25rem .5rem;
+  border-radius:999px;
+  border:1px solid rgba(165,180,252,.45);
+  background:rgba(165,180,252,.12);
+}
+
+/* Action buttons */
+.actions{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem}
+.btn{
+  border:1px solid var(--card-line);
+  background:var(--card-bg);
+  color:#fff;
+  text-decoration:none;
+  padding:.55rem .85rem;
+  border-radius:10px
+}
+.btn.primary{
+  border-color:var(--accent);
+  background: rgba(165,180,252,.18);
+}
+
+/* Focus & accessibility */
+.node:focus-within{outline:2px solid var(--accent); outline-offset:3px}
+
+/* Reveal */
+.node{opacity:0; transform:translate3d(0,8px,0)}
+.node.visible{opacity:1; transform:translate3d(0,0,0); transition: opacity .5s ease, transform .5s ease}
+
+/* Link visuals */
+.links .edge{stroke:#a5b4fc; stroke-opacity:.1; stroke-width:1.5}
+.links .edge.hot{stroke-opacity:.6;}
+.links .node-glow{fill:none; stroke:#c7d2fe; stroke-opacity:.05; stroke-width:2}
+
+/* Mobile fallback: stack sections cleanly */
+@media (max-width: 860px){
+  .constellation{padding-top:4.5rem}
+  .node{
+    position:relative;
+    max-width:none;
+    min-width:unset;
+    left:auto !important;
+    top:auto !important;
+    margin:0 0 12px;
+  }
+  .constellation svg.links{display:none}
+}
+
+/* Reduced motion (system) */
+@media (prefers-reduced-motion: reduce){
+  .node{transition:none}
+}
+
+/* ===== Expander (click a node to open full panel) ===== */
+.expander-overlay[hidden]{display:none}
+.expander-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:grid;
+  place-items:center;
+  background:rgba(6,10,22,.60);
+  backdrop-filter: blur(10px);
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .24s ease;
+}
+.expander-overlay.show{opacity:1; pointer-events:auto}
+
+.expander-panel{
+  position:relative;
+  width:min(920px, 92vw);
+  max-height:min(86vh, 1200px);
+  overflow:auto;
+  border-radius:16px;
+  border:1px solid var(--card-line);
+  background:linear-gradient(to bottom, rgba(255,255,255,.06), rgba(255,255,255,.04));
+  box-shadow:0 24px 72px rgba(0,0,0,.5);
+  transform: translateY(8px) scale(.98);
+  opacity:0;
+}
+
+/* animate in when overlay is shown */
+.expander-overlay.show .expander-panel{
+  animation: panelIn .26s cubic-bezier(.2,.65,.2,1) forwards;
+}
+/* animate out when closing */
+.expander-panel.closing{
+  animation: panelOut .18s cubic-bezier(.2,.65,.2,1) forwards;
+}
+@keyframes panelIn{
+  from{ transform: translateY(10px) scale(.98); opacity:0 }
+  to  { transform: translateY(0)   scale(1);    opacity:1 }
+}
+@keyframes panelOut{
+  from{ transform: translateY(0)   scale(1);    opacity:1 }
+  to  { transform: translateY(6px) scale(.985); opacity:0 }
+}
+
+/* header + body */
+.expander-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 16px;
+  position:sticky;
+  top:0;
+  background:rgba(10,12,26,.82);
+  backdrop-filter: blur(12px);
+  border-bottom:1px solid var(--card-line)
+}
+.expander-title{font-size:1.1rem; letter-spacing:.3px; margin:0}
+.expander-close{
+  appearance:none;
+  border:1px solid var(--card-line);
+  background:var(--card-bg);
+  color:#fff;
+  border-radius:10px;
+  padding:.45rem .7rem;
+  cursor:pointer
+}
+.expander-body{padding:16px}
+
+/* While expanded, calm the background nodes/links */
+.constellation[data-expanded="true"] .node{opacity:.4; filter:saturate(.9)}
+.constellation[data-expanded="true"] .node:focus-within{outline:none}
+.constellation[data-expanded="true"] .node.is-source{opacity:1; filter:none}
+.constellation[data-expanded="true"] svg.links{opacity:0.1}
+
+/* Optional media grid inside expander */
+.expander-body .gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:10px
+}
+.expander-body img,
+.expander-body video{
+  width:100%;
+  height:auto;
+  border-radius:12px;
+  display:block
+}
+
+/* Motion-off hardening for expander */
+:root[data-motion="off"] .expander-overlay{transition:none}
+
+/* === Inline expand: transform pipeline ================================== */
+/* Base transform now uses CSS vars so JS can nudge nodes during expand */
+.node {
+  transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0) scale(var(--scale, 1));
+  transition:
+    box-shadow .25s ease,
+    transform .28s cubic-bezier(.2,.65,.2,1),
+    background .25s ease,
+    border-color .25s ease,
+    opacity .25s ease,
+    filter .25s ease;
+}
+
+/* When any node is expanded, calm the background nodes */
+.constellation[data-inline-expanded="true"] .node {
+  opacity: .20;
+  filter: saturate(.85);
+}
+
+/* Keep the focused node crisp, raise above others */
+.node.expanded {
+  opacity: 1 !important;
+  filter: none !important;
+  z-index: 100;
+  /* small visual lift */
+  box-shadow: 0 18px 60px rgba(0,0,0,.45), 0 8px 24px rgba(165,180,252,.16);
+  border-color: rgba(165,180,252,.45);
+}
+
+/* Hide links a bit while expanded so the graph doesn't distract */
+.constellation[data-inline-expanded="true"] svg.links { opacity: 0.12; }
+
+/* Expanded detail area INSIDE the node (fed from .expand-content) */
+.expanded-body {
+  max-height: 0;
+  opacity: 0;
+  overflow: clip;
+  transition: max-height .35s cubic-bezier(.2,.65,.2,1), opacity .25s ease;
+}
+
+/* Reveal details when expanded */
+.node.expanded .expanded-body {
+  max-height: 70vh;  /* roomy but not overwhelming */
+  opacity: 1;
+  margin-top: .65rem;
+}
+
+/* Optional: make media inside the expanded body look tidy */
+.expanded-body .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+  gap: 10px;
+}
+.expanded-body img,
+.expanded-body video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Respect motion-off even during inline expand */
+:root[data-motion="off"] .expanded-body { transition: none; max-height: none; opacity: 1; }
+
+.callout{
+  border:1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.06);
+  padding:.15rem .4rem; border-radius:999px; font-size:.8rem;
+}
+@keyframes glint {
+  0% { background: linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,.18), rgba(255,255,255,.06)); background-size:200% 100%; background-position: -100% 0; }
+  100%{ background-position: 100% 0; }
+}
+.callout.glint { animation: glint .8s ease-out 1; }
+
+/* Featured nodes are slightly larger and sit above others */
+.node[data-featured="true"] { --scale: 1.06; z-index: 5; border-color: rgba(165,180,252,.55); }
+
+/* Brighter connecting lines to/from featured nodes */
+.links .edge.is-featured { stroke-opacity:.85; stroke-width:2; }
+
+/* Subtle beacon pulse every few seconds */
+@keyframes beaconPulse { 
+  0% { box-shadow: 0 0 0 0 rgba(165,180,252,.35) }
+  70%{ box-shadow: 0 0 0 16px rgba(165,180,252,0) }
+  100%{ box-shadow: 0 0 0 0 rgba(165,180,252,0) }
+}
+.node[data-featured="true"].beacon { animation: beaconPulse 2.4s ease-out 1; }

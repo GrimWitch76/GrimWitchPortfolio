@@ -6,8 +6,10 @@
 <title>Cosmic Debugger — Curtis Reynolds</title>
 <meta name="description" content="Curtis Reynolds — Game Programmer. Clean ✦ Magical ✦ Space." />
 <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="./css/filters-and-reveal.css" />
 <link rel="stylesheet" href="../css/warp-vt.css" />
 <script src="../js/warp-vt.js" defer></script>
+<script src="js/about.js" defer></script>
 </head>
 <body>
 <!-- Background effects -->
@@ -18,17 +20,20 @@
 
 <!-- Nav -->
 <header class="nav">
-<div class="container nav-wrap">
-<a href="#home" class="brand">Cosmic Debugger</a>
-<nav class="nav" aria-label="Primary">
-<a href="#projects">Projects</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-<a class="btn" href="#resume">Résumé</a>
-</nav>
-</div>
+  <div class="container nav-wrap">
+    <a href="#home" class="brand">
+      <img src="images/logo.png" alt="Cosmic Debugger Logo" class="logo">
+      Cosmic Debugger
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="https://cultpenguinstudio.ca/">Cult Penguin Studio</a>
+      <a class="btn" href="assets/CurtisReynoldsResume2025.pdf" data-no-warp target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </div>
 </header>
-
 
 <main class="container" id="home" style="position:relative;z-index:10">
 <!-- Hero -->
@@ -54,7 +59,7 @@
 <small>Currently</small>
 <p class="aside-title">Gameplay/UI Engineer @ Sprung Studios</p>
 <small>Vancouver, BC</small>
-<p class="aside-copy">Building portfolio pieces and polishing <em>Echo Protocol</em>.</p>
+<p class="aside-copy">Building <em>Ghost With a Gun</em> and <em>Echo Protocol</em>.</p>
 </div>
 </div>
 </section>
@@ -62,55 +67,260 @@
 
 <hr/>
 
+<section id="featuredProjects" class="section">
+<h2 class="h2"><span class="accent">Featured Projects</span></h2>
+
+<!-- FEATURED PROJECTS -->
+<section class="featured-projects" aria-label="Featured projects">
+  <!-- Echo Protocol -->
+  <article class="featured-card" data-featured="true">
+    <a class="featured-media" href="./projects/echo-protocol.html" aria-label="Open Echo Protocol" data-no-warp>
+      <picture>
+        <!-- swap these with your assets -->
+        <img src="images/echoprotocol.png" alt="" loading="lazy" decoding="async">
+      </picture>
+    </a>
+
+    <div class="featured-body">
+      <header class="featured-head">
+        <h3 class="featured-title">
+          <a href="./projects/echo-protocol.html" data-no-warp>Echo Protocol</a>
+        </h3>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">Horror</span>
+          <span class="chip">AI • Shaders • Tools</span>
+        </div>
+      </header>
+
+      <p class="featured-blurb">
+        Arctic descent survival: sound-driven ghost AI, tile-blending shaders, in-engine map editor,
+        and anomaly systems woven through a 60s-terminal aesthetic.
+      </p>
+
+      <ul class="featured-bullets">
+        <li>Ghost state machine (wander/investigate) powered by sound events</li>
+        <li>URP + custom SRP pass for world-space tile blending</li>
+        <li>POI/biome generator, prop palette, Addressables pipeline</li>
+      </ul>
+
+      <div class="featured-actions">
+        <a class="btn primary" href="./projects/echo-protocol.html" data-no-warp>View Case Study</a>
+        <a class="btn" href="#" data-no-warp>Devlog</a>
+        <a class="btn" href="#" data-no-warp>Source</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Ghost With a Gun -->
+  <article class="featured-card" data-featured="true">
+    <a class="featured-media" href="./projects/ghost-with-a-gun.html" aria-label="Open Ghost With a Gun" data-no-warp>
+      <picture>
+        <img src="images/gwag_thumbnail.png" alt="" loading="lazy" decoding="async" style=" background-size: 100% 100%; object-fit: fill; ">
+      </picture>
+    </a>
+
+    <div class="featured-body">
+      <header class="featured-head">
+        <h3 class="featured-title">
+          <a href="./projects/ghost-with-a-gun.html" data-no-warp>Ghost With a Gun</a>
+        </h3>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">Jam → Prototype</span>
+          <span class="chip">Gameplay • UI</span>
+        </div>
+      </header>
+
+      <p class="featured-blurb">
+        From 48-hour jam to polished prototype: reactive UI, crunchy gunfeel, and a cleaner AI loop.
+      </p>
+
+      <ul class="featured-bullets">
+        <li>Damage/impact UX: screenspace effects + timelines</li>
+        <li>Cleaned up jam code for stability, input remap support</li>
+        <li>Reusable menu & state framework across prototypes</li>
+        <br/>
+        <br/>
+      </ul>
+
+      <div class="featured-actions">
+        <a class="btn primary" href="./projects/ghost-with-a-gun.html" data-no-warp>View Project</a>
+        <a class="btn" href="#" data-no-warp>Download</a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<hr/>
 
 <!-- Projects -->
 <section id="projects" class="section">
-<h2 class="h2">Projects</h2>
+<h2 class="h2"><span class="accent">Projects</span></h2>
 <p class="lead lead-tight">A small constellation of shipped games, tools, and prototypes. Click to open case studies.</p>
+<div class="filterbar"></div>
 <div class="cards" id="project-cards" aria-live="polite"></div>
 </section>
 
 
 <hr/>
 
+<section id="about" class="about-section" aria-label="About Curtis Reynolds">
+  <header class="about-hero">
+    <div class="about-title">
+      <h2><span class="accent">About</span></h2>
+      <p class="about-tagline">Game programmer, cosmic debugger, builder of weird little worlds.</p>
+    </div>
 
-<!-- About -->
-<section id="about" class="section">
-<div class="about">
-<div>
-<h2 class="h2">About</h2>
-<p class="lead">I build robust gameplay systems, clean UI, and the glue code that makes teams fast. I like constraints, cozy horror, and tools that save everyone an hour a day.</p>
-<ul class="bullets">
-<li>UE5 / Unity</li>
-<li>C++ / C#</li>
-<li>Shaders / VFX</li>
-<li>Tools & Pipelines</li>
-<li>Input / UI Systems</li>
-<li>Performance Passes</li>
-</ul>
-</div>
-<div class="aside">
-<small>Bio bits</small>
-<p class="aside-title">Shipped games at studios, jam enjoyer, portfolio tinkerer.</p>
-<p class="aside-copy">Into analog‑horror vibes and polished feel.</p>
-</div>
-</div>
+    <!-- Optional avatar/logo (drop an image or leave empty) -->
+    <div class="about-avatar" aria-hidden="true">
+      <!-- <img src="media/avatar.jpg" alt="" /> -->
+      <div class="avatar-fallback">🛰️</div>
+    </div>
+  </header>
+
+  <article class="about-bio card">
+    <p>
+      I design and program systems that feel alive—AI that listens, shaders that whisper,
+      and UX that gets out of the way. Previously at Hothead Games; currently building
+      <em>Echo Protocol</em> and shipping sharp tools that help teams move faster.
+    </p>
+    <ul class="about-facts">
+      <li><span>Location</span> Vancouver, BC</li>
+      <li><span>Focus</span> Gameplay, UI, rendering, tools</li>
+      <li><span>Engines</span> Unity, Unreal (UE5)</li>
+      <li><span>Vibe</span> clean, magical space ✨</li>
+    </ul>
+  </article>
+
+  <section class="about-skills">
+    <h3>Skills & Tools</h3>
+    <div class="skills-grid">
+      <div class="skill card">
+        <h4>Engines</h4>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">UE5</span>
+          <span class="chip">Shader Graph</span>
+          <span class="chip">Niagara</span>
+        </div>
+      </div>
+      <div class="skill card">
+        <h4>Languages</h4>
+        <div class="chips">
+          <span class="chip">C#</span>
+          <span class="chip">C++</span>
+          <span class="chip">HLSL</span>
+          <span class="chip">GLSL</span>
+          <span class="chip">JS/TS</span>
+        </div>
+      </div>
+      <div class="skill card">
+        <h4>Rendering / Tech Art</h4>
+        <div class="chips">
+          <span class="chip">URP</span>
+          <span class="chip">SRP</span>
+          <span class="chip">PostFX</span>
+          <span class="chip">Compute</span>
+        </div>
+      </div>
+      <div class="skill card">
+        <h4>Audio / UX</h4>
+        <div class="chips">
+          <span class="chip">FMOD</span>
+          <span class="chip">Wwise</span>
+          <span class="chip">UI Systems</span>
+          <span class="chip">Input</span>
+        </div>
+      </div>
+      <div class="skill card">
+        <h4>Production</h4>
+        <div class="chips">
+          <span class="chip">Git</span>
+          <span class="chip">Jira</span>
+          <span class="chip">Perforce</span>
+          <span class="chip">CI/CD</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-timeline">
+    <div class="timeline-head">
+      <h3>Timeline</h3>
+      <div class="timeline-legend">
+        <span class="dot"></span> Major milestone
+      </div>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <div class="tl-track"></div>
+      <div class="tl-progress" id="tlProgress"></div>
+
+      <!-- Newest first or chronological; your call -->
+      <article class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card card">
+          <h4>Sprung Studios — Gameplay/UI Engineer</h4>
+          <p class="tl-meta">2025 — Present</p>
+          <p>Started at Sprung Studios, where I honed my c++ skills and learned to understand UI/UX design</p>
+        </div>
+      </article>
+
+      <article class="tl-item reveal">
+        <div class="tl-card card">
+          <h4>Echo Protocol — Indie Project</h4>
+          <p class="tl-meta">2025</p>
+          <p>Started work on what I hope to be my first fully published game, a slow burn arctic horror uncovering the truth under the permafrost</p>
+        </div>
+      </article>
+
+      <article class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card card">
+          <h4>Hothead Games — Engineer</h4>
+          <p class="tl-meta">2022 — 2024</p>
+          <p>Live-ops features and platform work on shipped titles; polished UI tech pipelines.</p>
+        </div>
+      </article>
+
+      <article class="tl-item reveal">
+        <div class="tl-card card">
+          <h4>Vancouver Film School — TA</h4>
+          <p class="tl-meta">2022</p>
+          <p>Mentored students on Unity, rendering basics, and production workflows.</p>
+        </div>
+      </article>
+
+      <article class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card card">
+          <h4>Vancouver Film School</h4>
+          <p class="tl-meta">2020 - 2021</p>
+          <p>Graduated from VFS programming for game, web, and mobile course with honors</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer class="about-cta">
+    <a class="btn primary" href="assets/CurtisReynoldsResume2025.pdf" data-no-warp target="_blank" rel="noopener">Download Resume</a>
+  </footer>
 </section>
 
-
 <hr/>
-
 
 <!-- Contact -->
 <section id="contact" class="section">
 <div class="contact-box">
-<h2 class="h2">Say hello</h2>
+<h2 class="h2" style="margin: 10px; margin-left: 0px"><span class="accent">Say Hello</span></h2>
 <p class="lead">Want a hand with a prototype, a UI pass, or a spooky jam? I’m always up for cool problems.</p>
 <div class="links">
 <a class="btn" href="mailto:hello@example.com">Email</a>
-<a class="btn" href="#">GitHub</a>
-<a class="btn" href="#">Itch.io</a>
-<a class="btn" href="#">LinkedIn</a>
+<a class="btn" href="https://github.com/GrimWitch76/">GitHub</a>
+<a class="btn" href="https://grimwitch.itch.io/">Itch.io</a>
+<a class="btn" href="https://www.linkedin.com/in/curtis-reynolds98/">LinkedIn</a>
 </div>
 </div>
 </section>
@@ -128,5 +338,8 @@
 <script src="js/projects.js" defer></script>
 <script src="js/bg.js" defer></script>
 <script src="js/main.js" defer></script>
+<script src="js/perf-toggle.js" defer></script>
+<script src="./js/filters-and-reveal.js" defer></script>
+
 </body>
 </html>

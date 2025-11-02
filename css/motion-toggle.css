@@ -1,0 +1,9 @@
+/* Global motion toggle helpers */
+:root[data-motion="off"] * { scroll-behavior: auto; }
+:root[data-motion="off"] .node { transition: none !important; transform: none !important; }
+:root[data-motion="off"] .reveal, :root[data-motion="off"] .reveal.visible { transition: none !important; transform: none !important; opacity: 1 !important; }
+:root[data-motion="off"] .constellation .links .edge, 
+:root[data-motion="off"] .constellation .links .node-glow { transition: none !important; }
+
+/* small helper if you want to hide background animations when off */
+:root[data-motion="off"] canvas#bg { opacity: 0.95; }

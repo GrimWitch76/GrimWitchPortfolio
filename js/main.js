@@ -7,3 +7,4 @@ document.querySelectorAll('a[href^="/projects/"]').forEach(a=>{
     l.rel = 'prefetch'; l.href = a.href; document.head.appendChild(l);
   }, {once:true});
 });
+

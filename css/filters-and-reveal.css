@@ -1,0 +1,25 @@
+/* Filter chips + scroll reveal for project grid */
+
+/* ===== Filter bar ===== */
+.filterbar{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+.filterbar .chip{position:relative;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#e5e7eb;font-weight:600;font-size:13px;letter-spacing:.3px;cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .15s ease}
+.filterbar .chip:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22);transform:translateY(-1px)}
+.filterbar .chip[data-active="true"]{background:rgba(99,102,241,.16);border-color:rgba(165,180,252,.35);box-shadow:0 0 0 2px rgba(99,102,241,.12) inset}
+.filterbar .chip .dot{width:6px;height:6px;border-radius:50%;background:#a5b4fc;box-shadow:0 0 10px rgba(165,180,252,.8)}
+
+/* ===== Grid hide/show helpers ===== */
+.cards .card{transition:transform .22s ease,opacity .22s ease,box-shadow .22s ease,background .22s ease}
+.cards .card.is-out{opacity:0;transform:scale(.98)}
+.cards .card[hidden]{display:none !important}
+
+/* ===== Scroll reveal ===== */
+.reveal{opacity:0;transform:translateY(8px);}
+.reveal.visible{opacity:1;transform:none;transition:opacity .44s ease, transform .44s ease}
+
+/* Stagger: allow small delay via data-reveal-delay (ms) */
+.reveal.visible{transition-delay:var(--reveal-delay,0ms)}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .cards .card,.reveal,.reveal.visible{transition:none !important;transform:none !important}
+}

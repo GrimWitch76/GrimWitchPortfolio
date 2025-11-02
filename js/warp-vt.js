@@ -36,10 +36,12 @@
   document.addEventListener('click', (e) => {
     const a = e.target && e.target.closest && e.target.closest('a');
     if (!a) return;
-    if (a.target || a.hasAttribute('download') || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (a.target || a.hasAttribute('download') || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.hasAttribute('data-no-warp') ) return;
     if (a.dataset.noWarp !== undefined) return;
 
     const u = parse(a.href); if (!u || !sameOrigin(u)) return;
+
+    if(e.Data)
 
     // Same-document hash
     if (sameDoc(u) && u.hash) {
@@ -48,7 +50,7 @@
       (motionOK && isHTTP && supportsVT) ? document.startViewTransition(go) : go();
       return;
     }
-    
+
     // Cross-document same-origin
     if (!sameDoc(u)) {
       e.preventDefault();
